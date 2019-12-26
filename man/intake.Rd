@@ -6,20 +6,35 @@
 \title{Intake Data}
 \format{The main data frame \code{intake} has 36,190 rows and 17 variables:
 \describe{
-\item{case_id}{Id}
-\item{case_participant_id}{Id}
-\item{received_date}{id}
+\item{case_id}{Internal unique identifier for each case}
+\item{case_participant_id}{Internal unique identifier for each person associated with a case}
+\item{received_date}{Date when felony review received the case}
+\item{offense_category}{Broad offense categories before specific charges are filed on a case}
+\item{participant_status}{The status of a case brought against a person. This status does not necessarily come from Felony Review}
+\item{age_at_incident}{Recorded age at the time of the incident}
+\item{gender}{Recorded gender of the defendant }
+\item{race}{Recorded race of the defendant}
+\item{incident_begin_date}{Date of when the incident began}
+\item{incident_end_date}{Date of when the incident ended (this will be blank for incidents that did not go more than one day)}
+\item{law_enforcement_agency}{Law enforcement agency associated with the arrest}
+\item{unit}{The law enforcement unit associated with the arrest}
+\item{incident_city}{The city where the incident took place}
+\item{arrest_date}{Date and time of arrest}
+\item{felony_review_date}{The date of the felony review process}
+\item{felony_review_result}{The result of the felony review process for cases that went through felony review}
+\item{update_offense_category}{This field is the offense category for the case updated based upon the top charge for the primary offender. It can differ from the first offense category assigned to the case in part because cases evolve.}
 }
 
 The supplemental data frame \code{\link{initiation}} was not filtered.}
 \source{
-\url{https://github.com}
+\url{https://datacatalog.cookcountyil.gov/Courts/Intake/3k7z-hchi}
 }
 \usage{
 intake
 }
 \description{
-Intake Data
+The intake data presented in this data reflects the cases brought in for review.
+Each row represents a potential defendant in a case.
 }
 \examples{
 str(intake)

@@ -2,7 +2,8 @@
 library(dplyr)
 library(forcats)
 
-intake_data <- RSocrata::read.socrata('https://datacatalog.cookcountyil.gov/resource/3k7z-hchi.csv')
+intake_data <- RSocrata::read.socrata('https://datacatalog.cookcountyil.gov/resource/3k7z-hchi.csv') %>%
+  as_tibble()
 
 intake <- intake_data %>%
   mutate(case_id = as.character(case_id),
@@ -14,4 +15,4 @@ intake <- intake_data %>%
          law_enforcement_agency = as_factor(law_enforcement_agency)) %>%
   filter(received_date >= lubridate::ymd_hms('2019-01-01 00:00:00'))
 
-usethis::use_data(intake, overwrite = T)
+usethis::use_data(intake, overwrite = T, version = 3)
