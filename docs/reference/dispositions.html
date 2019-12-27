@@ -85,6 +85,21 @@ that leads to the resolution of a case. Each row represents a charge that has be
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/Getting-Started-with-the-Data.html">Getting Started with the Data</a>
+    </li>
+    <li>
+      <a href="../articles/Teaching-with-the-Data.html">Teaching with the Data</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -189,163 +204,7 @@ that leads to the resolution of a case. Each row represents a charge that has be
 #&gt;  $ received_date                    : POSIXct, format: "2019-01-01" "2019-01-01" ...
 #&gt;  $ arraignment_date                 : POSIXct, format: "2019-02-05" "2019-02-07" ...
 #&gt;  $ updated_offense_category         : chr  "Reckless Discharge of Firearm" "UUW - Unlawful Use of Weapon" "UUW - Unlawful Use of Weapon" "UUW - Unlawful Use of Weapon" ...
-#&gt;  $ charge_count                     : int  1 2 3 4 5 6 7 8 9 10 ...</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>dispositions</span>)</div><div class='output co'>#&gt;        case_id case_participant_id             offense_category primary_charge
-#&gt; 1 129568558770       1079960508495 UUW - Unlawful Use of Weapon           true
-#&gt; 2 129568602572       1079960625753 UUW - Unlawful Use of Weapon          false
-#&gt; 3 129568602572       1079960625753 UUW - Unlawful Use of Weapon          false
-#&gt; 4 129568602572       1079960625753 UUW - Unlawful Use of Weapon          false
-#&gt; 5 129568602572       1079960625753 UUW - Unlawful Use of Weapon          false
-#&gt; 6 129568602572       1079960625753 UUW - Unlawful Use of Weapon          false
-#&gt;       charge_id charge_version_id
-#&gt; 1 2534066046185      577689205836
-#&gt; 2 2536166541538      578179378084
-#&gt; 3 2536167428821      578179579469
-#&gt; 4 2536207948093      578189111715
-#&gt; 5 2536208539615      578189245972
-#&gt; 6 2536209131137      578189380229
-#&gt;                   disposition_charged_offense_title disposition_charged_chapter
-#&gt; 1                   RECKLESS DISCHARGE OF A FIREARM                         720
-#&gt; 2 UNLAWFUL USE OR POSSESSION OF A WEAPON BY A FELON                         720
-#&gt; 3 UNLAWFUL USE OR POSSESSION OF A WEAPON BY A FELON                         720
-#&gt; 4                 AGGRAVATED UNLAWFUL USE OF WEAPON                         720
-#&gt; 5                 AGGRAVATED UNLAWFUL USE OF WEAPON                         720
-#&gt; 6                 AGGRAVATED UNLAWFUL USE OF WEAPON                         720
-#&gt;   disposition_charged_act disposition_charged_section disposition_charged_class
-#&gt; 1                       5                   24-1.5(a)                         4
-#&gt; 2                       5                   24-1.1(a)                         2
-#&gt; 3                       5                   24-1.1(a)                         2
-#&gt; 4                       5                24-1.6(a)(1)                         2
-#&gt; 5                       5                24-1.6(a)(1)                         2
-#&gt; 6                       5                24-1.6(a)(1)                         2
-#&gt;   disposition_charged_aoic     disposition_date charge_disposition
-#&gt; 1                  0010322 4/8/2019 12:00:00 AM     Plea Of Guilty
-#&gt; 2                  0012309 8/5/2019 12:00:00 AM  Nolle Prosecution
-#&gt; 3                  0012310 8/5/2019 12:00:00 AM  Nolle Prosecution
-#&gt; 4                  0012475 8/5/2019 12:00:00 AM  Nolle Prosecution
-#&gt; 5                  0012475 8/5/2019 12:00:00 AM  Nolle Prosecution
-#&gt; 6                  0012475 8/5/2019 12:00:00 AM  Nolle Prosecution
-#&gt;   charge_disposition_reason             judge           court_name
-#&gt; 1                           Thaddeus L Wilson District 1 - Chicago
-#&gt; 2       PG to Other Count/s Thaddeus L Wilson District 1 - Chicago
-#&gt; 3       PG to Other Count/s Thaddeus L Wilson District 1 - Chicago
-#&gt; 4       PG to Other Count/s Thaddeus L Wilson District 1 - Chicago
-#&gt; 5       PG to Other Count/s Thaddeus L Wilson District 1 - Chicago
-#&gt; 6       PG to Other Count/s Thaddeus L Wilson District 1 - Chicago
-#&gt;   court_facility age_at_incident gender                       race
-#&gt; 1    26TH Street              42   Male                      Black
-#&gt; 2    26TH Street              20   Male White [Hispanic or Latino]
-#&gt; 3    26TH Street              20   Male White [Hispanic or Latino]
-#&gt; 4    26TH Street              20   Male White [Hispanic or Latino]
-#&gt; 5    26TH Street              20   Male White [Hispanic or Latino]
-#&gt; 6    26TH Street              20   Male White [Hispanic or Latino]
-#&gt;   incident_begin_date incident_end_date         arrest_date
-#&gt; 1          2018-12-31              &lt;NA&gt; 2018-12-31 22:55:00
-#&gt; 2          2019-01-01              &lt;NA&gt; 2018-12-31 23:28:00
-#&gt; 3          2019-01-01              &lt;NA&gt; 2018-12-31 23:28:00
-#&gt; 4          2019-01-01              &lt;NA&gt; 2018-12-31 23:28:00
-#&gt; 5          2019-01-01              &lt;NA&gt; 2018-12-31 23:28:00
-#&gt; 6          2019-01-01              &lt;NA&gt; 2018-12-31 23:28:00
-#&gt;   law_enforcement_agency                unit incident_city received_date
-#&gt; 1             CHICAGO PD District 10 - Ogden       Chicago    2019-01-01
-#&gt; 2             CHICAGO PD District 10 - Ogden       Chicago    2019-01-01
-#&gt; 3             CHICAGO PD District 10 - Ogden       Chicago    2019-01-01
-#&gt; 4             CHICAGO PD District 10 - Ogden       Chicago    2019-01-01
-#&gt; 5             CHICAGO PD District 10 - Ogden       Chicago    2019-01-01
-#&gt; 6             CHICAGO PD District 10 - Ogden       Chicago    2019-01-01
-#&gt;   arraignment_date      updated_offense_category charge_count
-#&gt; 1       2019-02-05 Reckless Discharge of Firearm            1
-#&gt; 2       2019-02-07  UUW - Unlawful Use of Weapon            2
-#&gt; 3       2019-02-07  UUW - Unlawful Use of Weapon            3
-#&gt; 4       2019-02-07  UUW - Unlawful Use of Weapon            4
-#&gt; 5       2019-02-07  UUW - Unlawful Use of Weapon            5
-#&gt; 6       2019-02-07  UUW - Unlawful Use of Weapon            6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>dispositions</span>)</div><div class='output co'>#&gt;    case_id          case_participant_id offense_category   primary_charge    
-#&gt;  Length:20234       Length:20234        Length:20234       Length:20234      
-#&gt;  Class :character   Class :character    Class :character   Class :character  
-#&gt;  Mode  :character   Mode  :character    Mode  :character   Mode  :character  
-#&gt;                                                                              
-#&gt;                                                                              
-#&gt;                                                                              
-#&gt;                                                                              
-#&gt;   charge_id         charge_version_id  disposition_charged_offense_title
-#&gt;  Length:20234       Length:20234       Length:20234                     
-#&gt;  Class :character   Class :character   Class :character                 
-#&gt;  Mode  :character   Mode  :character   Mode  :character                 
-#&gt;                                                                         
-#&gt;                                                                         
-#&gt;                                                                         
-#&gt;                                                                         
-#&gt;  disposition_charged_chapter disposition_charged_act
-#&gt;  Length:20234                Length:20234           
-#&gt;  Class :character            Class :character       
-#&gt;  Mode  :character            Mode  :character       
-#&gt;                                                     
-#&gt;                                                     
-#&gt;                                                     
-#&gt;                                                     
-#&gt;  disposition_charged_section disposition_charged_class disposition_charged_aoic
-#&gt;  Length:20234                Length:20234              Length:20234            
-#&gt;  Class :character            Class :character          Class :character        
-#&gt;  Mode  :character            Mode  :character          Mode  :character        
-#&gt;                                                                                
-#&gt;                                                                                
-#&gt;                                                                                
-#&gt;                                                                                
-#&gt;  disposition_date   charge_disposition charge_disposition_reason
-#&gt;  Length:20234       Length:20234       Length:20234             
-#&gt;  Class :character   Class :character   Class :character         
-#&gt;  Mode  :character   Mode  :character   Mode  :character         
-#&gt;                                                                 
-#&gt;                                                                 
-#&gt;                                                                 
-#&gt;                                                                 
-#&gt;     judge            court_name        court_facility     age_at_incident 
-#&gt;  Length:20234       Length:20234       Length:20234       Min.   : 18.00  
-#&gt;  Class :character   Class :character   Class :character   1st Qu.: 23.00  
-#&gt;  Mode  :character   Mode  :character   Mode  :character   Median : 30.00  
-#&gt;                                                           Mean   : 33.61  
-#&gt;                                                           3rd Qu.: 42.00  
-#&gt;                                                           Max.   :119.00  
-#&gt;                                                           NA's   :295     
-#&gt;     gender              race           incident_begin_date          
-#&gt;  Length:20234       Length:20234       Min.   :1998-10-17 00:00:00  
-#&gt;  Class :character   Class :character   1st Qu.:2019-02-03 00:00:00  
-#&gt;  Mode  :character   Mode  :character   Median :2019-03-30 00:00:00  
-#&gt;                                        Mean   :2019-03-28 10:44:42  
-#&gt;                                        3rd Qu.:2019-06-09 00:00:00  
-#&gt;                                        Max.   :2019-11-15 00:00:00  
-#&gt;                                        NA's   :275                  
-#&gt;  incident_end_date              arrest_date                 
-#&gt;  Min.   :2001-06-26 00:00:00   Min.   :1965-11-06 15:59:00  
-#&gt;  1st Qu.:2019-01-11 00:00:00   1st Qu.:2019-02-12 12:21:00  
-#&gt;  Median :2019-03-08 00:00:00   Median :2019-04-05 19:14:00  
-#&gt;  Mean   :2019-01-20 18:29:27   Mean   :2019-04-13 13:45:28  
-#&gt;  3rd Qu.:2019-06-23 12:00:00   3rd Qu.:2019-06-13 08:14:00  
-#&gt;  Max.   :2019-11-11 00:00:00   Max.   :2019-11-15 21:44:00  
-#&gt;  NA's   :19354                 NA's   :551                  
-#&gt;  law_enforcement_agency     unit           incident_city     
-#&gt;  Length:20234           Length:20234       Length:20234      
-#&gt;  Class :character       Class :character   Class :character  
-#&gt;  Mode  :character       Mode  :character   Mode  :character  
-#&gt;                                                              
-#&gt;                                                              
-#&gt;                                                              
-#&gt;                                                              
-#&gt;  received_date                 arraignment_date             
-#&gt;  Min.   :2019-01-01 00:00:00   Min.   :2018-02-01 00:00:00  
-#&gt;  1st Qu.:2019-02-14 00:00:00   1st Qu.:2019-03-21 00:00:00  
-#&gt;  Median :2019-04-07 00:00:00   Median :2019-05-08 00:00:00  
-#&gt;  Mean   :2019-04-21 02:28:44   Mean   :2019-05-15 22:13:24  
-#&gt;  3rd Qu.:2019-06-18 00:00:00   3rd Qu.:2019-07-03 00:00:00  
-#&gt;  Max.   :2019-11-22 00:00:00   Max.   :2019-12-06 00:00:00  
-#&gt;                                NA's   :6658                 
-#&gt;  updated_offense_category  charge_count   
-#&gt;  Length:20234             Min.   : 1.000  
-#&gt;  Class :character         1st Qu.: 1.000  
-#&gt;  Mode  :character         Median : 1.000  
-#&gt;                           Mean   : 2.837  
-#&gt;                           3rd Qu.: 3.000  
-#&gt;                           Max.   :53.000  
-#&gt;                                           </div><div class='input'>
+#&gt;  $ charge_count                     : int  1 2 3 4 5 6 7 8 9 10 ...</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

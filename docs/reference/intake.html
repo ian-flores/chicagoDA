@@ -85,6 +85,21 @@ Each row represents a potential defendant in a case." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/Getting-Started-with-the-Data.html">Getting Started with the Data</a>
+    </li>
+    <li>
+      <a href="../articles/Teaching-with-the-Data.html">Teaching with the Data</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -161,76 +176,8 @@ Each row represents a potential defendant in a case.</p>
 #&gt;  $ arrest_date            : POSIXct, format: "2018-11-12 23:23:00" NA ...
 #&gt;  $ felony_review_date     : POSIXct, format: NA "2019-01-01" ...
 #&gt;  $ felony_review_result   : chr  "" "Approved" "Approved" "Continued Investigation" ...
-#&gt;  $ update_offense_category: chr  "Narcotics" "UUW - Unlawful Use of Weapon" "UUW - Unlawful Use of Weapon" "Reckless Discharge of Firearm" ...</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>intake</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 17</span><span>
-#&gt;   case_id case_participan… received_date       offense_category participant_sta…
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 129405… 1077995851303    2019-01-05 </span><span style='color: #949494;'>00:00:00</span><span> UUW - Unlawful … Approved        
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 129568… 1079958749626    2019-01-01 </span><span style='color: #949494;'>00:00:00</span><span> UUW - Unlawful … Approved        
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 129568… 1079959687690    2019-01-01 </span><span style='color: #949494;'>00:00:00</span><span> UUW - Unlawful … Approved        
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 129568… 1079959922206    2019-01-01 </span><span style='color: #949494;'>00:00:00</span><span> Reckless Discha… Approved        
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 129568… 1079960508495    2019-01-01 </span><span style='color: #949494;'>00:00:00</span><span> UUW - Unlawful … Approved        
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> 129568… 1079960625753    2019-01-01 </span><span style='color: #949494;'>00:00:00</span><span> UUW - Unlawful … Approved        
-#&gt; </span><span style='color: #949494;'># … with 12 more variables: age_at_incident </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, gender </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span style='color: #949494;'>, race </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span style='color: #949494;'>,
-#&gt; #   incident_begin_date </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span style='color: #949494;'>, incident_end_date </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span style='color: #949494;'>,
-#&gt; #   law_enforcement_agency </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span style='color: #949494;'>, unit </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, incident_city </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,
-#&gt; #   arrest_date </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span style='color: #949494;'>, felony_review_date </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span style='color: #949494;'>, felony_review_result </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,
-#&gt; #   update_offense_category </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>intake</span>)</div><div class='output co'>#&gt;    case_id          case_participant_id received_date                
-#&gt;  Length:36190       Length:36190        Min.   :2019-01-01 00:00:00  
-#&gt;  Class :character   Class :character    1st Qu.:2019-03-26 00:00:00  
-#&gt;  Mode  :character   Mode  :character    Median :2019-06-15 00:00:00  
-#&gt;                                         Mean   :2019-06-14 23:10:30  
-#&gt;                                         3rd Qu.:2019-09-05 00:00:00  
-#&gt;                                         Max.   :2019-12-02 00:00:00  
-#&gt;                                                                      
-#&gt;                      offense_category                     participant_status
-#&gt;  Narcotics                   :12901   Approved                     :29675   
-#&gt;  UUW - Unlawful Use of Weapon: 5104                                : 2669   
-#&gt;  Retail Theft                : 2463   Rejected                     : 2509   
-#&gt;  Sex Crimes                  : 1490   Continued Investigation      :  832   
-#&gt;  Aggravated DUI              : 1173   Co-Defendant/See Related Case:  186   
-#&gt;  Burglary                    : 1112   Not Charged                  :  107   
-#&gt;  (Other)                     :11947   (Other)                      :  212   
-#&gt;  age_at_incident                         gender     
-#&gt;  Min.   : 17.00   Male                      :30322  
-#&gt;  1st Qu.: 25.00   Female                    : 4550  
-#&gt;  Median : 32.00                             : 1306  
-#&gt;  Mean   : 34.85   Unknown Gender            :    9  
-#&gt;  3rd Qu.: 44.00   Unknown                   :    0  
-#&gt;  Max.   :137.00   Male name, no gender given:    3  
-#&gt;  NA's   :1080                                       
-#&gt;                          race       incident_begin_date          
-#&gt;  Black                     :23668   Min.   :1974-03-22 00:00:00  
-#&gt;  White [Hispanic or Latino]: 5053   1st Qu.:2019-03-06 00:00:00  
-#&gt;  White                     : 4492   Median :2019-05-30 00:00:00  
-#&gt;                            : 1579   Mean   :2019-04-14 02:36:34  
-#&gt;  HISPANIC                  :  869   3rd Qu.:2019-08-21 00:00:00  
-#&gt;  Asian                     :  241   Max.   :2019-12-01 00:00:00  
-#&gt;  (Other)                   :  288   NA's   :854                  
-#&gt;  incident_end_date                                 law_enforcement_agency
-#&gt;  Min.   :1989-05-24 00:00:00   CHICAGO PD                     :24619     
-#&gt;  1st Qu.:2018-12-06 00:00:00   COOK COUNTY SHERIFF (IL0160000): 1239     
-#&gt;  Median :2019-03-29 00:00:00   CICERO PD                      :  610     
-#&gt;  Mean   :2018-06-30 19:00:23   ORLAND PARK PD                 :  357     
-#&gt;  3rd Qu.:2019-07-27 00:00:00   CHICAGO HEIGHTS PD             :  326     
-#&gt;  Max.   :2019-11-28 00:00:00   SKOKIE PD                      :  255     
-#&gt;  NA's   :34181                 (Other)                        : 8784     
-#&gt;      unit           incident_city       arrest_date                 
-#&gt;  Length:36190       Length:36190       Min.   :1965-11-06 15:59:00  
-#&gt;  Class :character   Class :character   1st Qu.:2019-03-25 10:11:45  
-#&gt;  Mode  :character   Mode  :character   Median :2019-06-13 22:25:00  
-#&gt;                                        Mean   :2019-06-08 20:25:01  
-#&gt;                                        3rd Qu.:2019-08-29 10:51:15  
-#&gt;                                        Max.   :2019-12-01 23:25:00  
-#&gt;                                        NA's   :4252                 
-#&gt;  felony_review_date            felony_review_result update_offense_category
-#&gt;  Min.   :2015-07-17 00:00:00   Length:36190         Length:36190           
-#&gt;  1st Qu.:2019-03-31 00:00:00   Class :character     Class :character       
-#&gt;  Median :2019-06-18 00:00:00   Mode  :character     Mode  :character       
-#&gt;  Mean   :2019-06-16 21:33:31                                               
-#&gt;  3rd Qu.:2019-09-05 00:00:00                                               
-#&gt;  Max.   :2019-12-13 00:00:00                                               
-#&gt;  NA's   :15191                                                             </div><div class='input'>
-</div></span></pre>
+#&gt;  $ update_offense_category: chr  "Narcotics" "UUW - Unlawful Use of Weapon" "UUW - Unlawful Use of Weapon" "Reckless Discharge of Firearm" ...</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
