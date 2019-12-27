@@ -58,8 +58,6 @@ Each row represents a charge that has been sentenced.
 }
 \examples{
 str(sentencing)
-head(sentencing)
-summary(sentencing)
 
 }
 \seealso{

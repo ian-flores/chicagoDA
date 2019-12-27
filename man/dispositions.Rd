@@ -50,8 +50,6 @@ that leads to the resolution of a case. Each row represents a charge that has be
 }
 \examples{
 str(dispositions)
-head(dispositions)
-summary(dispositions)
 
 }
 \seealso{

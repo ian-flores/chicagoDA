@@ -43,7 +43,5 @@
 #' @import tibble
 #' @examples
 #' str(dispositions)
-#' head(dispositions)
-#' summary(dispositions)
 #'
 "dispositions"

@@ -47,7 +47,5 @@
 #' @importFrom tibble tibble
 #' @examples
 #' str(initiation)
-#' head(initiation)
-#' summary(initiation)
 #'
 "initiation"

@@ -240,6 +240,8 @@ glimpse(sentencing)
 #> $ charge_count                      <int> 1, 11, 5, 2, 1, 1, 1, 1, 4, 1,…
 ```
 
+You can access its documentation with the following command:
+
 ``` r
 ?sentencing
 ```

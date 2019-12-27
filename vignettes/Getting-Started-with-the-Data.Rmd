@@ -1,0 +1,14 @@
+---
+title: "Getting Started with the Data"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(chicagoDA)
+```

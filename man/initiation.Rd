@@ -53,8 +53,6 @@ Juvenile Justice and Civil Actions Bureaus.
 }
 \examples{
 str(initiation)
-head(initiation)
-summary(initiation)
 
 }
 \seealso{

@@ -109,6 +109,8 @@ The data frame `sentencing` has 4,329 rows and 39 variables:
 glimpse(sentencing)
 ```
 
+You can access its documentation with the following command:
+
 ```{r}
 ?sentencing
 ```

@@ -52,7 +52,5 @@
 #' @importFrom tibble tibble
 #' @examples
 #' str(sentencing)
-#' head(sentencing)
-#' summary(sentencing)
 #'
 "sentencing"

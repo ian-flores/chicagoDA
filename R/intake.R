@@ -30,7 +30,5 @@
 #' @importFrom tibble tibble
 #' @examples
 #' str(intake)
-#' head(intake)
-#' summary(intake)
 #'
 "intake"

@@ -36,8 +36,6 @@ Each row represents a potential defendant in a case.
 }
 \examples{
 str(intake)
-head(intake)
-summary(intake)
 
 }
 \seealso{

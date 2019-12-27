@@ -8,3 +8,6 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^vignettes/Getting-Started-with-the-Data\.Rmd$
+^vignettes/Teaching-with-the-Data\.Rmd$
+netlify.toml
