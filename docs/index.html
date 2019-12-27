@@ -89,17 +89,72 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">'ian-flores/chicagoDA'</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(chicagoDA)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a></code></pre></div>
-<p>The package contains 1 function and 4 datasets:</p>
 </div>
-<div id="function" class="section level2">
+<div id="functions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#function" class="anchor"></a>Function</h2>
-<p>The package only has one functions which allows to extract all of the data available in the Cook County Government’s Open Data Portal.</p>
+<a href="#functions" class="anchor"></a>Functions</h2>
+<p>The package only has one function which allows to extract all of the data available in the Cook County State Attorney’s Open Data Portal.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/get_all_data.html">get_all_data</a></span>(<span class="st">'sentencing'</span>)</a></code></pre></div>
 </div>
 <div id="datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#datasets" class="anchor"></a>Datasets</h2>
+<p>There are 4 datasets included in the package. All of them are filtered for cases <strong>received</strong> by the State Attorney’s Office during 2019. If you wish to extract cases from before or after 2019 you’ll need to use the <code><a href="reference/get_all_data.html">get_all_data()</a></code> function. This is given size constraints for packages.</p>
+<p>Datasets:</p>
+<ul>
+<li>
+<strong>Intake</strong>
+<ul>
+<li>
+<em>Observational Unit</em>: Case</li>
+<li>
+<em>Rows</em>: 36,190</li>
+<li>
+<em>Variables</em>: 17</li>
+<li>
+<em>Description</em>: Arrests brought in for review by the SAO</li>
+</ul>
+</li>
+<li>
+<strong>Initiation</strong>
+<ul>
+<li>
+<em>Obersvational Unit</em>: Charge</li>
+<li>
+<em>Rows</em>: 73,029</li>
+<li>
+<em>Variables</em>: 27</li>
+<li>
+<em>Description</em>: Arrests that turned into cases</li>
+</ul>
+</li>
+<li>
+<strong>Dispositions</strong>
+<ul>
+<li>
+<em>Observational Unit</em>: Charge</li>
+<li>
+<em>Rows</em>: 20,234</li>
+<li>
+<em>Variables</em>: 31</li>
+<li>
+<em>Description</em>: How the charges turned out (guilty, not guilty, dismissed, etc)</li>
+</ul>
+</li>
+<li>
+<strong>Sentencing</strong>
+<ul>
+<li>
+<em>Observational Unit</em>: Charge</li>
+<li>
+<em>Rows</em>: 4,329</li>
+<li>
+<em>Variables</em>: 39</li>
+<li>
+<em>Description</em>: Sentence imposed to a charge</li>
+</ul>
+</li>
+</ul>
 <div id="intake" class="section level3">
 <h3 class="hasAnchor">
 <a href="#intake" class="anchor"></a>Intake</h3>

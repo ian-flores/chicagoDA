@@ -85,11 +85,146 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(chicagoDA)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(chicagoDA)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(lubridate)</a></code></pre></div>
+<div id="datasets" class="section level2">
+<h2 class="hasAnchor">
+<a href="#datasets" class="anchor"></a>Datasets</h2>
+<p>There are 4 datasets included in the package. All of them are filtered for cases <strong>received</strong> by the State Attorney’s Office during 2019. If you wish to extract cases from before or after 2019 you’ll need to use the <code><a href="../reference/get_all_data.html">get_all_data()</a></code> function. This is given size constraints for packages.</p>
+<div id="intake" class="section level3">
+<h3 class="hasAnchor">
+<a href="#intake" class="anchor"></a><strong>Intake</strong>
+</h3>
+<ul>
+<li>
+<em>Observational Unit</em>: Case</li>
+<li>
+<em>Rows</em>: 36,190</li>
+<li>
+<em>Variables</em>: 17</li>
+<li>
+<em>Description</em>: Arrests brought in for review by the SAO</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">intake <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(<span class="dt">date =</span> <span class="kw"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span>(received_date)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> n)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">'Date'</span>,</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">         <span class="dt">y =</span> <span class="st">'Received Cases'</span>,</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">         <span class="dt">title =</span> <span class="st">'Is the number of received cases constant through out the year?'</span>)</a></code></pre></div>
+<p><img src="Getting-Started-with-the-Data_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+</div>
+<div id="initiation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#initiation" class="anchor"></a><strong>Initiation</strong>
+</h3>
+<ul>
+<li>
+<em>Obersvational Unit</em>: Charge</li>
+<li>
+<em>Rows</em>: 73,029</li>
+<li>
+<em>Variables</em>: 27</li>
+<li>
+<em>Description</em>: Arrests that turned into cases</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(forcats)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">initiation <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(law_enforcement_agency <span class="op">==</span><span class="st"> 'CHICAGO PD'</span>,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">         race <span class="op">!=</span><span class="st"> ''</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">  </span><span class="kw">add_count</span>(updated_offense_category, race) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span>(updated_offense_category, race, n) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">  </span><span class="kw">group_by</span>(updated_offense_category) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">crime_count =</span> <span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">  </span><span class="kw">group_by</span>(race) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">20</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span>(updated_offense_category, crime_count, <span class="dt">.desc =</span> F), </a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">             <span class="dt">y =</span> <span class="kw"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(n),</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">             <span class="dt">colour =</span> race, </a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">             <span class="dt">fill =</span> race)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">'identity'</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">'Log of the number of charges initiated by arrests made by Chicago PD'</span>,</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22">         <span class="dt">x =</span> <span class="st">'Type of Charge'</span>,</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">         <span class="dt">title =</span> <span class="st">'In what cases does Chicago PD focuses?'</span>,</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">         <span class="dt">subtitle =</span> <span class="st">'Showing top 20 charges brought up, per race'</span>)</a></code></pre></div>
+<p><img src="Getting-Started-with-the-Data_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+</div>
+<div id="dispositions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#dispositions" class="anchor"></a><strong>Dispositions</strong>
+</h3>
+<ul>
+<li>
+<em>Observational Unit</em>: Charge</li>
+<li>
+<em>Rows</em>: 20,234</li>
+<li>
+<em>Variables</em>: 31</li>
+<li>
+<em>Description</em>: How the charges turned out (guilty, not guilty, dismissed, etc)</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">dispositions <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(race, charge_disposition) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(charge_disposition) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">charge_n =</span> <span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(race <span class="op">!=</span><span class="st"> ''</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span>(charge_disposition, charge_n), <span class="dt">y =</span> <span class="kw"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(n), <span class="dt">fill =</span> race)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">'identity'</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">'Log of the number of dispositions'</span>,</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">         <span class="dt">x =</span> <span class="st">'Disposition Status'</span>,</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">         <span class="dt">title =</span> <span class="st">'Are the differences by race in the disposition of charges?'</span>,</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">         <span class="dt">subtitle =</span> <span class="st">'Data for all Cook County'</span>)</a></code></pre></div>
+<p><img src="Getting-Started-with-the-Data_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+</div>
+<div id="sentencing" class="section level3">
+<h3 class="hasAnchor">
+<a href="#sentencing" class="anchor"></a><strong>Sentencing</strong>
+</h3>
+<ul>
+<li>
+<em>Observational Unit</em>: Charge</li>
+<li>
+<em>Rows</em>: 4,329</li>
+<li>
+<em>Variables</em>: 39</li>
+<li>
+<em>Description</em>: Sentence imposed to a charge</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">sentencing <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(commitment_type <span class="op">==</span><span class="st"> 'Illinois Department of Corrections'</span>,</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">         race <span class="op">!=</span><span class="st"> ''</span>, race <span class="op">!=</span><span class="st"> 'Unknown'</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age_at_incident, <span class="dt">y =</span> <span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(commitment_term))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">'lm'</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">'Age at Incident'</span>,</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">         <span class="dt">y =</span> <span class="st">'Sentence (Years)'</span>,</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">         <span class="dt">title =</span> <span class="st">'Do younger prisioners get harsher sentences?'</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>race)</a></code></pre></div>
+<p><img src="Getting-Started-with-the-Data_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#datasets">Datasets</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

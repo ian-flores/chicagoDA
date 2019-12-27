@@ -38,17 +38,40 @@ library(chicagoDA)
 library(tidyverse)
 ```
 
-The package contains 1 function and 4 datasets:
+## Functions
 
-## Function
-
-The package only has one functions which allows to extract all of the data available in the Cook County Government's Open Data Portal. 
+The package only has one function which allows to extract all of the data available in the Cook County State Attorney's Open Data Portal. 
 
 ```{r, eval = FALSE}
 get_all_data('sentencing')
 ```
 
 ## Datasets
+
+There are 4 datasets included in the package. All of them are filtered for cases **received** by the State Attorney's Office during 2019. If you wish to extract cases from before or after 2019 you'll need to use the `get_all_data()` function. This is given size constraints for packages.
+
+Datasets:
+
+- **Intake**
+  - *Observational Unit*: Case
+  - *Rows*: 36,190
+  - *Variables*: 17
+  - *Description*: Arrests brought in for review by the SAO
+- **Initiation**
+  - *Obersvational Unit*: Charge
+  - *Rows*: 73,029
+  - *Variables*: 27
+  - *Description*: Arrests that turned into cases
+- **Dispositions**
+  - *Observational Unit*: Charge
+  - *Rows*: 20,234
+  - *Variables*: 31
+  - *Description*: How the charges turned out (guilty, not guilty, dismissed, etc)
+- **Sentencing**
+  - *Observational Unit*: Charge
+  - *Rows*: 4,329
+  - *Variables*: 39
+  - *Description*: Sentence imposed to a charge
 
 ### Intake
 

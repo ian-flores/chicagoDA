@@ -1,14 +1,121 @@
 ---
 title: "Getting Started with the Data"
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
 ```{r setup}
 library(chicagoDA)
+library(tidyverse)
+library(lubridate)
+```
+
+## Datasets
+
+There are 4 datasets included in the package. All of them are filtered for cases **received** by the State Attorney's Office during 2019. If you wish to extract cases from before or after 2019 you'll need to use the `get_all_data()` function. This is given size constraints for packages.
+
+### **Intake**
+  
+- *Observational Unit*: Case
+- *Rows*: 36,190
+- *Variables*: 17
+- *Description*: Arrests brought in for review by the SAO
+  
+```{r}
+intake %>%
+  group_by(date = ymd(received_date)) %>%
+  count() %>%
+  ggplot(aes(x = date, y = n)) +
+    geom_point() +
+    geom_smooth() +
+    labs(x = 'Date',
+         y = 'Received Cases',
+         title = 'Is the number of received cases constant through out the year?')
+```
+
+### **Initiation**
+
+- *Obersvational Unit*: Charge
+- *Rows*: 73,029
+- *Variables*: 27
+- *Description*: Arrests that turned into cases
+
+```{r}
+library(forcats)
+
+initiation %>%
+  filter(law_enforcement_agency == 'CHICAGO PD',
+         race != '') %>%
+  add_count(updated_offense_category, race) %>%
+  select(updated_offense_category, race, n) %>%
+  unique() %>%
+  group_by(updated_offense_category) %>%
+  mutate(crime_count = sum(n)) %>%
+  ungroup() %>%
+  group_by(race) %>%
+  top_n(20) %>%
+  ungroup() %>%
+  ggplot(aes(x = fct_reorder(updated_offense_category, crime_count, .desc = F), 
+             y = log(n),
+             colour = race, 
+             fill = race)) +
+    geom_bar(stat = 'identity') +
+    coord_flip() +
+    labs(y = 'Log of the number of charges initiated by arrests made by Chicago PD',
+         x = 'Type of Charge',
+         title = 'In what cases does Chicago PD focuses?',
+         subtitle = 'Showing top 20 charges brought up, per race')
+```
+
+### **Dispositions**
+
+- *Observational Unit*: Charge
+- *Rows*: 20,234
+- *Variables*: 31
+- *Description*: How the charges turned out (guilty, not guilty, dismissed, etc)
+
+```{r}
+dispositions %>%
+  group_by(race, charge_disposition) %>%
+  count() %>%
+  ungroup() %>%
+  group_by(charge_disposition) %>%
+  mutate(charge_n = sum(n)) %>%
+  filter(race != '') %>%
+  ggplot(aes(x = fct_reorder(charge_disposition, charge_n), y = log(n), fill = race)) +
+    geom_bar(stat = 'identity') +
+    coord_flip() +
+    labs(y = 'Log of the number of dispositions',
+         x = 'Disposition Status',
+         title = 'Are the differences by race in the disposition of charges?',
+         subtitle = 'Data for all Cook County')
+```
+
+### **Sentencing**
+  
+- *Observational Unit*: Charge
+- *Rows*: 4,329
+- *Variables*: 39
+- *Description*: Sentence imposed to a charge
+
+```{r}
+sentencing %>%
+  filter(commitment_type == 'Illinois Department of Corrections',
+         race != '', race != 'Unknown') %>%
+  ggplot(aes(x = age_at_incident, y = as.numeric(commitment_term))) +
+    geom_point() +
+    geom_smooth(method = 'lm') +
+    labs(x = 'Age at Incident',
+         y = 'Sentence (Years)',
+         title = 'Do younger prisioners get harsher sentences?') +
+    facet_wrap(~ race)
 ```

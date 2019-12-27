@@ -7,6 +7,6 @@ citEntry(
   year     = '2019',
   url      = 'chicagoda.netlify.com',
   textVersion = paste(
-    "Ian Flores Siaca (2019). chicagoDA: A Package to facilitate access to the Cook County's State Attorney's Data. chicagoda.netlify.com, github.com/ian-flores/chicagoDA"
+    "Ian Flores-Siaca (2019). chicagoDA: A Package to facilitate access to the Cook County's State Attorney's Data. chicagoda.netlify.com, github.com/ian-flores/chicagoDA"
   )
 )
