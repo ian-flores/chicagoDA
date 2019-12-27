@@ -231,6 +231,4 @@ glimpse(sentencing)
 
 ``` r
 ?sentencing
-#> No documentation for 'sentencing' in specified packages and libraries:
-#> you could try '??sentencing'
 ```
