@@ -92,3 +92,13 @@ You can access its documentation with the following command:
 ### Sentencing
 
 The sentencing data presented in this report reflects the judgment imposed by the court on people that have been found guilty. Each row represents a charge that has been sentenced.
+
+The data frame `sentencing` has 4,329 rows and 39 variables:
+
+```{r}
+glimpse(sentencing)
+```
+
+```{r}
+?sentencing
+```

@@ -25,7 +25,7 @@
 #' }
 #'
 #' @source \url{https://datacatalog.cookcountyil.gov/Courts/Intake/3k7z-hchi}
-#' @seealso  \code{\link{initiation}} \code{\link{dispositions}}
+#' @seealso  \code{\link{initiation}} \code{\link{dispositions}} \code{\link{sentencing}}
 #' @import tibble
 #' @importFrom tibble tibble
 #' @examples

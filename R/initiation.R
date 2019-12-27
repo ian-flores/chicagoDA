@@ -42,7 +42,7 @@
 #' }
 #'
 #' @source \url{https://datacatalog.cookcountyil.gov/Courts/Initiation/7mck-ehwz}
-#' @seealso  \code{\link{intake}} \code{\link{dispositions}}
+#' @seealso  \code{\link{intake}} \code{\link{dispositions}} \code{\link{sentencing}}
 #' @import tibble
 #' @importFrom tibble tibble
 #' @examples

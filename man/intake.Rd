@@ -41,6 +41,6 @@ summary(intake)
 
 }
 \seealso{
-\code{\link{initiation}}
+\code{\link{initiation}} \code{\link{dispositions}} \code{\link{sentencing}}
 }
 \keyword{datasets}

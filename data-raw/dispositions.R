@@ -21,4 +21,4 @@ dispositions <- dispositions_data %>%
                  arraignment_date), funs(lubridate::mdy_hms)) %>%
   filter(received_date >= lubridate::ymd_hms('2019-01-01 00:00:00'))
 
-usethis::use_data(dispositions)
+usethis::use_data(dispositions, overwrite = T, version = 3)

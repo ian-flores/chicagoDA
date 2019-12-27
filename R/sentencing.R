@@ -1,9 +1,9 @@
-#' Dispositions Data
+#' Sentencing Data
 #'
-#' The disposition data presented in this data reflects the culmination of the fact-finding process
-#' that leads to the resolution of a case. Each row represents a charge that has been disposed of.
+#' The sentencing data presented in this report reflects the judgment imposed by the court on people that have been found guilty.
+#' Each row represents a charge that has been sentenced.
 #'
-#' @format The data frame \code{dispositions} has 20,234 rows and 31 variables:
+#' @format The data frame \code{sentencing} has 4,329 rows and 39 variables:
 #' \describe{
 #'   \item{case_id}{Internal unique identifier for each case}
 #'   \item{case_participant_id}{Internal unique identifier for each person associated with a case}
@@ -11,18 +11,26 @@
 #'   \item{primary_charge}{A flag for the top charge, usually the way the case is referred to}
 #'   \item{charge_id}{Internal unique identifier for each charge filed}
 #'   \item{charge_version_id}{Internal unique identifier for each version of a charge associated with charges filed}
-#'   \item{disposition_charged_offense_title}{The specific title of the charged offense at the disposition}
-#'   \item{disposition_charged_chapter}{The legal chapter for the charge at the disposition}
-#'   \item{disposition_charged_act}{The legal act for the charge at the disposition}
-#'   \item{disposition_charged_section}{The legal section for the charge at the disposition}
-#'   \item{disposition_charged_class}{The legal class for the charge at the disposition}
-#'   \item{disposition_aoic}{Administrative Office of the Illinois Courts ID for law of the charge at the disposition}
+#'   \item{disposition_charged_offense_title}{The specific title of the charged offense}
+#'   \item{disposition_charged_chapter}{The legal chapter for the charge}
+#'   \item{disposition_charged_act}{The legal act for the charge}
+#'   \item{disposition_charged_section}{The legal section for the charge}
+#'   \item{disposition_charged_class}{The legal class for the charge}
+#'   \item{disposition_aoic}{Administrative Office of the Illinois Courts ID for law of the charge}
 #'   \item{disposition_date}{The date the charge was disposed of}
 #'   \item{charge_disposition}{The result of the charge}
 #'   \item{charge_disposition_reason}{Additional information about the result of the charge}
-#'   \item{judge}{Judge who oversaw the case}
+#'   \item{sentence_phase}{Sentencing phase explains when this version of the sentence was created}
+#'   \item{sentence_date}{Date of when the charge was sentenced}
+#'   \item{sentence_judge}{Judge who oversaw the sentencing}
+#'   \item{sentence_type}{A broad type of sentence issued}
+#'   \item{current_sentence}{This is a flag which row represents a current sentence}
+#'   \item{commitment_type}{A more specific type of sentence issued}
+#'   \item{commitment_term}{The number associated with the sentence (use this with commitment_unit to understand length of sentence)}
+#'   \item{commitment_unit}{The unit associated with the sentence (use this with commitment_term to understand length of sentence)}
 #'   \item{court_name}{The Circuit Court District the charge was disposed of in}
 #'   \item{court_facility}{The courthouse the charge was disposed of in}
+#'   \item{length_of_case_in_days}{Number of days between a charge being arraigned and a charge being sentenced}
 #'   \item{age_at_incident}{Recorded age at the time of the incident}
 #'   \item{gender}{Recorded gender of the defendant }
 #'   \item{race}{Recorded race of the defendant}
@@ -38,12 +46,13 @@
 #'   \item{charge_count}{The charge count of the charged offense}
 #' }
 #'
-#' @source \url{https://datacatalog.cookcountyil.gov/Courts/Initiation/7mck-ehwz}
-#' @seealso  \code{\link{intake}} \code{\link{initiation}} \code{\link{sentencing}}
+#' @source \url{https://datacatalog.cookcountyil.gov/Courts/Sentencing/tg8v-tm6u}
+#' @seealso  \code{\link{intake}} \code{\link{initiation}} \code{\link{dispositions}}
 #' @import tibble
+#' @importFrom tibble tibble
 #' @examples
-#' str(dispositions)
-#' head(dispositions)
-#' summary(dispositions)
+#' str(sentencing)
+#' head(sentencing)
+#' summary(sentencing)
 #'
-"dispositions"
+"sentencing"

@@ -1,13 +1,12 @@
 Package: chicagoDA
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Facilitate access to the Cook County State Attorney’s Office data
+Version: 0.1.0.0
 Authors@R: 
     person(given = "Ian",
            family = "Flores Siaca",
            role = c("aut", "cre"),
-           email = "iflores.siaca@gmail.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "iflores.siaca@gmail.com")
+Description: Facilitate access to the Cook County State Attorney’s Office data.
 License: CCBY-4.0
 Suggests: 
     testthat (>= 2.1.0)
@@ -18,4 +17,6 @@ RoxygenNote: 6.1.1
 Imports: 
     RSocrata,
     tibble,
-    lubridate
+    lubridate,
+    dplyr,
+    tidyr
