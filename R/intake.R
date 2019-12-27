@@ -3,7 +3,7 @@
 #' The intake data presented in this data reflects the cases brought in for review.
 #' Each row represents a potential defendant in a case.
 #'
-#' @format The main data frame \code{intake} has 36,190 rows and 17 variables:
+#' @format The data frame \code{intake} has 36,190 rows and 17 variables:
 #' \describe{
 #'   \item{case_id}{Internal unique identifier for each case}
 #'   \item{case_participant_id}{Internal unique identifier for each person associated with a case}
@@ -24,11 +24,10 @@
 #'   \item{update_offense_category}{This field is the offense category for the case updated based upon the top charge for the primary offender. It can differ from the first offense category assigned to the case in part because cases evolve.}
 #' }
 #'
-#' The supplemental data frame \code{\link{initiation}} was not filtered.
-#'
 #' @source \url{https://datacatalog.cookcountyil.gov/Courts/Intake/3k7z-hchi}
-#' @seealso  \code{\link{initiation}}
+#' @seealso  \code{\link{initiation}} \code{\link{dispositions}}
 #' @import tibble
+#' @importFrom tibble tibble
 #' @examples
 #' str(intake)
 #' head(intake)

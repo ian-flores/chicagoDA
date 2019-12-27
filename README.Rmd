@@ -18,8 +18,8 @@ knitr::opts_chunk$set(
 # chicagoDA
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/chicagoDA)](https://CRAN.R-project.org/package=chicagoDA)
+<!--[![CRAN status](https://www.r-pkg.org/badges/version/chicagoDA)](https://CRAN.R-project.org/package=chicagoDA)-->
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 The goal of chicagoDA is to facilitate access to the Cook County State Attorney's Office data published recently by the Cook County Government. The package is named `chicagoDA` as Chicago is the most famous city within Cook County and thus will be more recognizable.
@@ -42,10 +42,53 @@ library(tidyverse)
 
 ### Intake
 
+The intake data presented in this data reflects the cases brought in for review. Each row represents a potential defendant in a case.
+
+The data frame `intake` has 36,190 rows and 17 variables:
+
 ```{r intake-glimpse}
 glimpse(intake)
 ```
 
+You can access its documentation with the following command:
+
 ```{r intake-docs, eval=FALSE}
 ?intake
 ```
+
+### Initiation
+
+
+The Initiation results data presented here reflects all of the arrests that came through the door of the State's Attorneys Office (SAO). An initiation is how an arrest turns into a “case” in the courts. Most cases are initiated through a process known as felony review, in which SAO attorneys make a decision whether or not to prosecute. Cases may also be indicted by a grand jury or, in narcotics cases, filed directly by law enforcement (labeled "BOND SET (Narcotics)" in this data). Included in this data set are the defendant counts by initiation and year. This data includes felony cases handled by the Criminal, Narcotics, and Special Prosecution Bureaus. It does not include information about cases processed through the Juvenile Justice and Civil Actions Bureaus.
+
+The data frame `initiation` has 73,029 rows and 27 variables:
+
+```{r}
+glimpse(initiation)
+```
+
+You can access its documentation with the following command:
+
+```{r initiation-docs, eval=FALSE}
+?initiation
+```
+
+### Dispositions
+
+The disposition data presented in this data reflects the culmination of the fact-finding process that leads to the resolution of a case. Each row represents a charge that has been disposed of.
+
+The data frame `dispositions` has 20,234 rows and 31 variables:
+
+```{r}
+glimpse(dispositions)
+```
+
+You can access its documentation with the following command:
+
+```{r dispositions-docs, eval=FALSE}
+?dispositions
+```
+
+### Sentencing
+
+The sentencing data presented in this report reflects the judgment imposed by the court on people that have been found guilty. Each row represents a charge that has been sentenced.

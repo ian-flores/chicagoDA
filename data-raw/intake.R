@@ -1,6 +1,7 @@
 ## code to prepare `intake` dataset goes here
 library(dplyr)
 library(forcats)
+library(tidyr)
 
 intake_data <- RSocrata::read.socrata('https://datacatalog.cookcountyil.gov/resource/3k7z-hchi.csv') %>%
   as_tibble()
