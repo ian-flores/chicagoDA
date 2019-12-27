@@ -26,12 +26,23 @@ install.packages("devtools")
 devtools::install_github('ian-flores/chicagoDA')
 ```
 
-## Datasets
-
 ``` r
 library(chicagoDA)
 library(tidyverse)
 ```
+
+The package contains 1 function and 4 datasets:
+
+## Function
+
+The package only has one functions which allows to extract all of the
+data available in the Cook County Government’s Open Data Portal.
+
+``` r
+get_all_data('sentencing')
+```
+
+## Datasets
 
 ### Intake
 
